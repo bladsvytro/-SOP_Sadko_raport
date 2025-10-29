@@ -571,9 +571,15 @@
                     </div>
                 </div>
                 <div class="chart-container">
-                    <div class="chart-title">Сравнение средних показателей</div>
+                    <div class="chart-title">Лайки и просмотры (в среднем)</div>
                     <div class="chart-wrapper">
-                        <canvas id="comparisonChart"></canvas>
+                        <canvas id="likesViewsChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <div class="chart-title">Репосты и комментарии (в среднем)</div>
+                    <div class="chart-wrapper">
+                        <canvas id="repostsCommentsChart"></canvas>
                     </div>
                 </div>
             </div>
@@ -640,7 +646,6 @@
                     </div>
                 </div>
                 
-                ```html
                 <div class="desant-card">
                     <h3>🗺️ География участия</h3>
                     <p><strong>Наш комиссар Михайлова Анна</strong> выезжала в десанты трех регионов:</p>
@@ -864,20 +869,20 @@
                 }
             });
 
-            // Новый график - сравнение средних показателей
-            new Chart(document.getElementById('comparisonChart'), {
+            // График лайков и просмотров
+            new Chart(document.getElementById('likesViewsChart'), {
                 type: 'bar',
                 data: {
-                    labels: ['Лайки', 'Репосты', 'Комментарии', 'Просмотры'],
+                    labels: ['Лайки', 'Просмотры'],
                     datasets: [{
                         label: '2023-2024 (в среднем)',
-                        data: [43, 2, 4, 879],
+                        data: [43, 879],
                         backgroundColor: 'rgba(115, 177, 200, 0.7)',
                         borderColor: '#73B1C8',
                         borderWidth: 1
                     }, {
                         label: '2024-2025 (в среднем)',
-                        data: [56, 3, 10, 983],
+                        data: [56, 983],
                         backgroundColor: 'rgba(237, 194, 25, 0.7)',
                         borderColor: '#EDC219',
                         borderWidth: 1
@@ -909,8 +914,33 @@
                     }
                 }
             });
-        });
-    </script>
-</body>
 
-
+            // График репостов и комментариев
+            new Chart(document.getElementById('repostsCommentsChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['Репосты', 'Комментарии'],
+                    datasets: [{
+                        label: '2023-2024 (в среднем)',
+                        data: [2, 4],
+                        backgroundColor: 'rgba(115, 177, 200, 0.7)',
+                        borderColor: '#73B1C8',
+                        borderWidth: 1
+                    }, {
+                        label: '2024-2025 (в среднем)',
+                        data: [3, 10],
+                        backgroundColor: 'rgba(237, 194, 25, 0.7)',
+                        borderColor: '#EDC219',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: { color: '#ffffff' }
+                        }
+                    },
+                    scales: {
+                       
